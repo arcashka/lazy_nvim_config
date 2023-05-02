@@ -21,28 +21,22 @@ return {
     config = true,
   },
 
-  -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-  },
-
-  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
-    opts = {
+    opts = function(_, opts)
       ---@type lspconfig.options
-      servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
-      },
+      opts.servers = {
+        clangd = {
+          cmd = require("tasks.cmake_kits_utils").currentClangdArgs(),
+        },
+        jsonls = {
+          mason = false,
+        },
+      }
+    end,
+    keys = {
+      { "<A-o>", ":ClangdSwitchSourceHeader<CR>", desc = "Switch source/header" },
     },
   },
 
