@@ -7,16 +7,16 @@ vim.keymap.set("n", ";", ":")
 vim.keymap.set("x", ";", ":")
 
 -- ,w ,q ,Q
-vim.keymap.set("n", "<leader>ww", ":update<cr>")
+vim.keymap.set("n", "<leader>ww", ":update<cr>", { silent = true })
 vim.keymap.set("n", "<leader>wq", ":x<cr>", { silent = true })
 vim.keymap.set("n", "<leader>Q", ":qa!<cr>", { silent = true })
 
 -- noh
-vim.keymap.set("n", "<C-n>", ":noh<cr>")
+vim.keymap.set("n", "<C-n>", ":noh<cr>", { silent = true })
 
 -- insert blank line
-vim.keymap.set("n", "<space>o", "printf('m`%so<esc>``', v:count1)", { expr = true })
-vim.keymap.set("n", "<space>O", "printf('m`%sO<esc>``', v:count1)", { expr = true })
+vim.keymap.set("n", "<space>o", "printf('m`%so<esc>``', v:count1)", { expr = true, silent = true })
+vim.keymap.set("n", "<space>O", "printf('m`%sO<esc>``', v:count1)", { expr = true, silent = true })
 
 -- close quickfix or loclist
 vim.keymap.set("n", "<leader>dq", "<cmd>lclose <bar> cclose<cr>", { silent = true })
