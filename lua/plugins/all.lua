@@ -4,8 +4,16 @@
 -- * override the configuration of LazyVim plugins
 return {
   { "sainnhe/everforest" },
+  -- remove annoying notifications
+  {
+    "folke/noice.nvim",
+    opts = {
+      messages = {
+        enabled = false,
+      },
+    },
+  },
 
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
@@ -37,6 +45,9 @@ return {
     end,
     keys = {
       { "<A-o>", ":ClangdSwitchSourceHeader<CR>", desc = "Switch source/header" },
+    },
+    dependencies = {
+      "simrat39/rust-tools.nvim",
     },
   },
 
