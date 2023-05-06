@@ -13,7 +13,7 @@ return {
           cmake_kits_file = vim.fn.stdpath("config") .. "/resources/" .. "nvim_cmake_kits.json",
           cmake_build_types_file = vim.fn.stdpath("config") .. "/resources/" .. "nvim_cmake_build_types.json",
           clangd_cmdline = {
-            "/home/dev/.local/share/nvim/mason/bin/clangd",
+            "clangd",
             "--background-index",
             "-j=8",
             "--clang-tidy",
@@ -27,56 +27,74 @@ return {
       },
       params_file = "neovim.json",
     },
-    keys = {
-      {
-        "<leader>bb",
-        ":Task start cmake_kits build -j 10<CR>",
-        mode = "n",
-        desc = "Cmake build",
-      },
-      {
-        "<leader>bB",
-        ":Task start cmake_kits build_all -j 10<CR>",
-        mode = "n",
-        desc = "Cmake build all",
-      },
-      {
-        "<leader>bc",
-        ":Task start cmake_kits configure<CR>",
-        mode = "n",
-        desc = "Cmake configure",
-      },
-      {
-        "<leader>bt",
-        ":Task set_module_param cmake_kits target<CR>",
-        mode = "n",
-        desc = "Cmake choose target",
-      },
-      {
-        "<leader>bk",
-        ":Task set_module_param cmake_kits build_kit<CR>",
-        mode = "n",
-        desc = "Cmake choose build kit",
-      },
-      {
-        "<leader>bd",
-        ":Task set_module_param cmake_kits build_type<CR>",
-        mode = "n",
-        desc = "Cmake choose build type",
-      },
-      {
-        "<leader>ba",
-        ":Task set_task_param cmake_kits configure args<CR>",
-        mode = "n",
-        desc = "Cmake add args",
-      },
-      {
-        "<leader>br",
-        ":Task start cmake_kits run<CR>",
-        mode = "n",
-        desc = "Cmake run",
-      },
-    },
     dependencies = "Shatur/neovim-tasks",
+  },
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = function(_, opts)
+      ---@type lspconfig.options
+      opts.servers = {
+        clangd = {
+          cmd = require("tasks.cmake_kits_utils").currentClangdArgs(),
+          on_attach = function(_, bufnr)
+            vim.keymap.set(
+              "n",
+              "<leader>bb",
+              ":Task start cmake_kits build -j 10<CR>",
+              { buffer = bufnr, desc = "CMake build", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>br",
+              ":Task start cmake_kits run<CR>",
+              { buffer = bufnr, desc = "CMake run", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bB",
+              ":Task start cmake_kits build_all -j 10<CR>",
+              { buffer = bufnr, desc = "CMake build all", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bc",
+              ":Task start cmake_kits configure<CR>",
+              { buffer = bufnr, desc = "CMake configure", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bt",
+              ":Task set_module_param cmake_kits target<CR>",
+              { buffer = bufnr, desc = "CMake choose target", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bk",
+              ":Task set_module_param cmake_kits build_kit<CR>",
+              { buffer = bufnr, desc = "CMake choose build_kit", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bd",
+              ":Task set_module_param cmake_kits build_type<CR>",
+              { buffer = bufnr, desc = "CMake choose build_type", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<leader>bd",
+              ":Task set_task_param cmake_kits configure args<CR>",
+              { buffer = bufnr, desc = "CMake choose configure args", silent = true }
+            )
+            vim.keymap.set(
+              "n",
+              "<A-o>",
+              ":ClangdSwitchSourceHeader<CR>",
+              { buffer = bufnr, desc = "Switch source/header", silent = true }
+            )
+          end,
+        },
+      }
+    end,
   },
 }
