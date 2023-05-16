@@ -37,64 +37,50 @@ return {
       opts.servers = {
         clangd = {
           cmd = require("tasks.cmake_kits_utils").currentClangdArgs(),
-          on_attach = function(_, bufnr)
-            vim.keymap.set(
-              "n",
-              "<leader>bb",
-              ":Task start cmake_kits build -j 10<CR>",
-              { buffer = bufnr, desc = "CMake build", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>br",
-              ":Task start cmake_kits run<CR>",
-              { buffer = bufnr, desc = "CMake run", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bB",
-              ":Task start cmake_kits build_all -j 10<CR>",
-              { buffer = bufnr, desc = "CMake build all", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bc",
-              ":Task start cmake_kits configure<CR>",
-              { buffer = bufnr, desc = "CMake configure", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bt",
-              ":Task set_module_param cmake_kits target<CR>",
-              { buffer = bufnr, desc = "CMake choose target", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bk",
-              ":Task set_module_param cmake_kits build_kit<CR>",
-              { buffer = bufnr, desc = "CMake choose build_kit", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bd",
-              ":Task set_module_param cmake_kits build_type<CR>",
-              { buffer = bufnr, desc = "CMake choose build_type", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<leader>bd",
-              ":Task set_task_param cmake_kits configure args<CR>",
-              { buffer = bufnr, desc = "CMake choose configure args", silent = true }
-            )
-            vim.keymap.set(
-              "n",
-              "<A-o>",
-              ":ClangdSwitchSourceHeader<CR>",
-              { buffer = bufnr, desc = "Switch source/header", silent = true }
-            )
-          end,
         },
       }
     end,
+    keys = {
+      {
+        "<leader>bs",
+        ":Task start cmake_kits build -j 10<CR>",
+        desc = "CMake build",
+      },
+      {
+        "<leader>br",
+        ":Task start cmake_kits run<CR>",
+        desc = "CMake run",
+      },
+      {
+        "<leader>bB",
+        ":Task start cmake_kits build_all -j 10<CR>",
+        desc = "CMake build all",
+      },
+      {
+        "<leader>bc",
+        ":Task start cmake_kits configure<CR>",
+        desc = "CMake configure",
+      },
+      {
+        "<leader>bt",
+        ":Task set_module_param cmake_kits target<CR>",
+        desc = "Change cmake target",
+      },
+      {
+        "<leader>bk",
+        ":Task set_module_param cmake_kits build_kit<CR>",
+        desc = "Change cmake build_kit",
+      },
+      {
+        "<leader>bd",
+        ":Task set_module_param cmake_kits build_type<CR>",
+        desc = "Change cmake build_type",
+      },
+      {
+        "<A-o>",
+        ":ClangdSwitchSourceHeader<CR>",
+        desc = "switch source and header",
+      },
+    },
   },
 }
