@@ -139,83 +139,86 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    keys = {
-      {
-        "<F5>",
-        function()
-          require("dap").continue()
-        end,
-        desc = "Debug start/continue",
-      },
-      {
-        "<F10>",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "Debug step over",
-      },
-      {
-        "<F9>",
-        function()
-          require("dap").step_into()
-        end,
-        desc = "Debug step into",
-      },
-      {
-        "<F11>",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Debug step out",
-      },
-      {
-        "<F2>",
-        function()
-          require("dap").toggle_breakpoint()
-        end,
-        desc = "Debug toggle breakpoint",
-      },
-      {
-        "<F3>",
-        function()
-          require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end,
-        desc = "Debug set breakpoint with condition",
-      },
-      {
-        "<F4>",
-        function()
-          require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-        end,
-        desc = "Debug set breakpoint log point message",
-      },
-      {
-        "<F6>",
-        function()
-          require("dap").repl.open()
-        end,
-        desc = "Debug open repl",
-      },
-      {
-        "<F7>",
-        function()
-          require("dap").run_last()
-        end,
-        desc = "Debug retun last",
-      },
-    },
+    keys = function()
+      return {
+        {
+          "<F5>",
+          function()
+            require("dap").continue()
+          end,
+          desc = "Debug start/continue",
+        },
+        {
+          "<F10>",
+          function()
+            require("dap").step_over()
+          end,
+          desc = "Debug step over",
+        },
+        {
+          "<F9>",
+          function()
+            require("dap").step_into()
+          end,
+          desc = "Debug step into",
+        },
+        {
+          "<F11>",
+          function()
+            require("dap").step_out()
+          end,
+          desc = "Debug step out",
+        },
+        {
+          "<F2>",
+          function()
+            require("dap").toggle_breakpoint()
+          end,
+          desc = "Debug toggle breakpoint",
+        },
+        {
+          "<F3>",
+          function()
+            require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+          end,
+          desc = "Debug set breakpoint with condition",
+        },
+        {
+          "<F4>",
+          function()
+            require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+          end,
+          desc = "Debug set breakpoint log point message",
+        },
+        {
+          "<F6>",
+          function()
+            require("dap").repl.open()
+          end,
+          desc = "Debug open repl",
+        },
+        {
+          "<F7>",
+          function()
+            require("dap").run_last()
+          end,
+          desc = "Debug retun last",
+        },
+      }
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
-    opts = {},
-    keys = {
-      {
-        "<F12>",
-        function()
-          require("dapui").toggle()
-        end,
-        desc = "Debug UI",
-      },
-    },
+    keys = function()
+      return {
+        {
+          "<F12>",
+          function()
+            require("dapui").toggle()
+          end,
+          desc = "Debug UI",
+        },
+      }
+    end,
   },
 }
