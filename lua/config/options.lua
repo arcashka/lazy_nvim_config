@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.mapleader = ","
 vim.opt.shiftwidth = 4
+vim.opt.swapfile = false

@@ -7,8 +7,8 @@ return {
       servers = {
         ---@type lspconfig.options.pyright
         pyright = {},
-        ---@type lspconfig.options.pylsp
-        pylsp = {},
+        -- ---@type lspconfig.options.pylsp
+        -- pylsp = {},
       },
     },
   },
