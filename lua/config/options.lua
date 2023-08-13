@@ -4,3 +4,4 @@
 vim.g.mapleader = ","
 vim.opt.shiftwidth = 4
 vim.opt.swapfile = false
+vim.opt.mouse = "nv"

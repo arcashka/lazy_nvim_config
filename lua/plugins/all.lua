@@ -4,6 +4,7 @@
 -- * override the configuration of LazyVim plugins
 return {
   { "sainnhe/everforest" },
+  { "Mofiqul/vscode.nvim" },
   -- remove annoying notifications
   {
     "folke/noice.nvim",
@@ -13,11 +14,10 @@ return {
       },
     },
   },
-
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "vscode",
     },
   },
 
