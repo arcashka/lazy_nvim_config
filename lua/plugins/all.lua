@@ -12,6 +12,9 @@ return {
       messages = {
         enabled = false,
       },
+      keys = function()
+        return {}
+      end,
     },
   },
   {

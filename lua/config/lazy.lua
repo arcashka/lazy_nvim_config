@@ -14,6 +14,9 @@ require("lazy").setup({
       keys = {},
     },
     { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
+    { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.tex" },
     { import = "plugins" },
   },
   defaults = {
