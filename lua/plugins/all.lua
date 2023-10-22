@@ -229,7 +229,7 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     opts = {
       automatic_setup = true,
-      ensure_installed = { "python" },
+      ensure_installed = { "python", "codelldb" },
       handlers = {
         function(config)
           require("mason-nvim-dap").default_setup(config)
