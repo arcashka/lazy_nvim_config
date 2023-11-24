@@ -66,6 +66,7 @@ return {
         "yaml",
         "cpp",
         "rust",
+        "wgsl",
       },
     },
   },
