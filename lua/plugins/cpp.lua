@@ -5,23 +5,25 @@ return {
     opts = {
       default_params = {
         cmake_kits = {
-          cmd = "cmake",
-          build_type = "release",
-          build_kit = "gcc",
-          dap_name = "codelldb",
+          cmd = "cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
+          build_type = "Release", -- default build type, can be changed using `:Task set_module_param cmake build_type`.
+          build_kit = "default", -- default build kit, can be changed using `:Task set_module_param cmake build_kit`.
+          dap_name = "codelldb", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
           build_dir = tostring(Path:new("{cwd}", "build")),
-          cmake_kits_file = vim.fn.stdpath("config") .. "/resources/" .. "nvim_cmake_kits.json",
-          cmake_build_types_file = vim.fn.stdpath("config") .. "/resources/" .. "nvim_cmake_build_types.json",
+          cmake_kits_file = vim.api.nvim_get_runtime_file("cmake_kits.json", false)[1], -- set path to JSON file containing cmake kits
+          cmake_build_types_file = vim.api.nvim_get_runtime_file("cmake_build_types.json", false)[1], -- set path to JSON file containing cmake kits
           clangd_cmdline = {
             "clangd",
             "--background-index",
-            "-j=8",
             "--clang-tidy",
+            "--header-insertion=never",
             "--completion-style=detailed",
             "--all-scopes-completion",
-            "--header-insertion=never",
+            "--offset-encoding=utf-8",
             "--pch-storage=memory",
+            "--cross-file-rename",
             "--log=verbose",
+            "-j=8",
           },
         },
       },
@@ -36,7 +38,20 @@ return {
       ---@type lspconfig.options
       opts.servers = {
         clangd = {
-          cmd = require("tasks.cmake_kits_utils").currentClangdArgs(),
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=never",
+            "--completion-style=detailed",
+            "--all-scopes-completion",
+            "--offset-encoding=utf-8",
+            "--pch-storage=memory",
+            "--cross-file-rename",
+            "--log=verbose",
+            "-j=8",
+            "--query-driver=/usr/bin/c++",
+          },
         },
       }
     end,

@@ -23,6 +23,16 @@ return {
       colorscheme = "vscode",
     },
   },
+  {
+    "folke/flash.nvim",
+    opts = {
+      modes = {
+        search = {
+          enabled = false,
+        },
+      },
+    },
+  },
 
   -- add symbols-outline
   {

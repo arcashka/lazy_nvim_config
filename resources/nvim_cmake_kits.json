@@ -1,13 +1,13 @@
 {
-  "gcc": {
-    "compilers": {
-      "C": "gcc",
-      "CXX": "g++"
-    },
-    "cmake_usr_args": {
-      "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
-    },
-    "generator": "Ninja",
-    "query_driver": "/usr/bin/g++"
-  }
+    "default": {
+        "compilers": {
+            "C": "gcc",
+            "CXX": "g++"
+        },
+        "cmake_usr_args": {
+            "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        },
+        "generator": "Ninja",
+        "query_driver": "/usr/bin/g++"
+    }
 }
