@@ -43,62 +43,33 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        wgsl_analyzer = {
-          handlers = {
-            ["wgsl-analyzer/requestConfiguration"] = function()
-              return {
-                success = true,
-                customImports = {
-                  bevy_pbr = {
-                    clustered_forward = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/clustered_forward.wgsl",
-                    mesh_bindings = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_bindings.wgsl",
-                    mesh_functions = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_functions.wgsl",
-                    mesh_types = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_types.wgsl",
-                    mesh_vertex_output = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_vertex_output.wgsl",
-                    mesh_view_bindings = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_view_bindings.wgsl",
-                    mesh_view_types = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/mesh_view_types.wgsl",
-                    pbr_bindings = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/pbr_bindings.wgsl",
-                    pbr_functions = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/pbr_functions.wgsl",
-                    lighting = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/pbr_lighting.wgsl",
-                    pbr_types = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/pbr_types.wgsl",
-                    shadows = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/shadows.wgsl",
-                    skinning = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/skinning.wgsl",
-                    utils = "home/arcashka/Documents/projects/other/bevy/crates/bevy_pbr/src/render/utils.wgsl",
-                  },
-                  bevy_sprite = {
-                    mesh2d_bindings = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_bindings.wgsl",
-                    mesh2d_functions = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_functions.wgsl",
-                    mesh2d_types = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_types.wgsl",
-                    mesh2d_vertex_output = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_vertex_output.wgsl",
-                    mesh2d_view_bindings = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_view_bindings.wgsl",
-                    mesh2d_view_types = "home/arcashka/Documents/projects/other/bevy/crates/bevy_sprite/src/mesh2d/mesh2d_view_types.wgsl",
-                  },
-                },
-                shaderDefs = {},
-                trace = {
-                  extension = false,
-                  server = false,
-                },
-                inlayHints = {
-                  enabled = false,
-                  typeHints = false,
-                  parameterHints = false,
-                  structLayoutHints = false,
-                  typeVerbosity = "inner",
-                },
-                diagnostics = {
-                  typeErrors = false,
-                  nagaParsingErrors = false,
-                  nagaValidationErrors = false,
-                  nagaVersion = "main",
-                },
-              }
-            end,
-          },
-          settings = {
-            ["wgsl-analyzer"] = {},
-          },
-        },
+        -- wgsl_analyzer = {
+        --   handlers = {
+        --     ["wgsl-analyzer/requestConfiguration"] = function()
+        --       return {
+        --         success = true,
+        --         customImports = {},
+        --         shaderDefs = {},
+        --         trace = {
+        --           extension = false,
+        --           server = false,
+        --         },
+        --         inlayHints = {
+        --           enabled = false,
+        --           typeHints = false,
+        --           parameterHints = false,
+        --           structLayoutHints = false,
+        --           typeVerbosity = "inner",
+        --         },
+        --         diagnostics = {
+        --           typeErrors = false,
+        --           nagaParsing = false,
+        --           nagaValidation = false,
+        --         },
+        --       }
+        --     end,
+        --   },
+        -- },
         -- Ensure mason installs the server
         rust_analyzer = {
           keys = {
