@@ -8,3 +8,15 @@ vim.opt.expandtab = true
 vim.opt.swapfile = false
 vim.opt.mouse = "nv"
 vim.opt.foldenable = false
+
+if vim.g.neovide then
+  vim.api.nvim_set_keymap("n", "<C-S-n>", ":lua ToggleFullscreen()<CR>", { noremap = true, silent = true })
+
+  function ToggleFullscreen()
+    if vim.g.neovide_fullscreen == true then
+      vim.g.neovide_fullscreen = false
+    else
+      vim.g.neovide_fullscreen = true
+    end
+  end
+end

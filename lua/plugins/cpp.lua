@@ -1,17 +1,18 @@
 local Path = require("plenary.path")
 return {
   {
-    "DoDoENT/neovim-additional-tasks",
+    "arcashka/neovim-additional-tasks",
+    branch = "add_env_args_for_build",
     opts = {
       default_params = {
         cmake_kits = {
-          cmd = "cmake", -- CMake executable to use, can be changed using `:Task set_module_param cmake cmd`.
-          build_type = "Release", -- default build type, can be changed using `:Task set_module_param cmake build_type`.
-          build_kit = "default", -- default build kit, can be changed using `:Task set_module_param cmake build_kit`.
-          dap_name = "codelldb", -- DAP configuration name from `require('dap').configurations`. If there is no such configuration, a new one with this name as `type` will be created.
+          cmd = "cmake",
+          build_type = "Release",
+          build_kit = "gcc",
+          dap_name = "codelldb",
           build_dir = tostring(Path:new("{cwd}", "build")),
-          cmake_kits_file = vim.api.nvim_get_runtime_file("cmake_kits.json", false)[1], -- set path to JSON file containing cmake kits
-          cmake_build_types_file = vim.api.nvim_get_runtime_file("cmake_build_types.json", false)[1], -- set path to JSON file containing cmake kits
+          cmake_kits_file = vim.api.nvim_get_runtime_file("nvim_cmake_kits.json", false)[0],
+          cmake_build_types_file = vim.api.nvim_get_runtime_file("nvim_cmake_build_types.json", false)[0],
           clangd_cmdline = {
             "clangd",
             "--background-index",
@@ -21,9 +22,9 @@ return {
             "--all-scopes-completion",
             "--offset-encoding=utf-8",
             "--pch-storage=memory",
-            "--cross-file-rename",
             "--log=verbose",
             "-j=8",
+            "--query-driver=/usr/bin/g++",
           },
         },
       },
@@ -47,10 +48,8 @@ return {
             "--all-scopes-completion",
             "--offset-encoding=utf-8",
             "--pch-storage=memory",
-            "--cross-file-rename",
-            "--log=verbose",
             "-j=8",
-            "--query-driver=/usr/bin/c++",
+            "--query-driver=/usr/bin/g++",
           },
         },
       }
