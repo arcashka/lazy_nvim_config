@@ -8,15 +8,22 @@ vim.opt.expandtab = true
 vim.opt.swapfile = false
 vim.opt.mouse = "nv"
 vim.opt.foldenable = false
+vim.opt.wrap = true
 
-if vim.g.neovide then
-  vim.api.nvim_set_keymap("n", "<C-S-n>", ":lua ToggleFullscreen()<CR>", { noremap = true, silent = true })
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function(_)
+    vim.api.nvim_set_keymap("n", "<C-S-n>", ":lua ToggleFullscreen()<CR>", { noremap = true, silent = true })
+    vim.g.neovide_theme = "auto"
+    vim.g.neovide_detach_on_quit = "always_detach"
+    vim.g.neovide_cursor_animation_length = 0.01
+    vim.g.neovide_refresh_rate = 144
 
-  function ToggleFullscreen()
-    if vim.g.neovide_fullscreen == true then
-      vim.g.neovide_fullscreen = false
-    else
-      vim.g.neovide_fullscreen = true
+    function ToggleFullscreen()
+      if vim.g.neovide_fullscreen == true then
+        vim.g.neovide_fullscreen = false
+      else
+        vim.g.neovide_fullscreen = true
+      end
     end
-  end
-end
+  end,
+})

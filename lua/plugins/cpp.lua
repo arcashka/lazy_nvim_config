@@ -48,8 +48,8 @@ return {
             "--all-scopes-completion",
             "--offset-encoding=utf-8",
             "--pch-storage=memory",
+            "--log=verbose",
             "-j=8",
-            "--query-driver=/usr/bin/g++",
           },
         },
       }
