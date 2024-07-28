@@ -96,7 +96,6 @@ return {
         "cmakelint",
         "python-lsp-server",
         "debugpy",
-        "rust-analyzer",
       },
     },
   },
