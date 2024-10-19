@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
   callback = function(_)
     local uname = vim.loop.os_uname().sysname
     if uname == "Windows_NT" then
-      vim.o.guifont = "MesloLGS NF,Hack NF:h12"
+      vim.o.guifont = "MesloLGS NF,Hack NF:h14"
     end
     vim.api.nvim_set_keymap("n", "<C-S-n>", ":lua ToggleFullscreen()<CR>", { noremap = true, silent = true })
     vim.g.neovide_theme = "auto"

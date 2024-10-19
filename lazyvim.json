@@ -1,6 +1,6 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.codeium",
+    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.lang.clangd",
@@ -9,7 +9,7 @@
     "lazyvim.plugins.extras.lang.rust"
   ],
   "news": {
-    "NEWS.md": "6258"
+    "NEWS.md": "6707"
   },
   "version": 6
 }
