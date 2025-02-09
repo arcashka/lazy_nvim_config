@@ -10,7 +10,18 @@ return {
     config = true,
   },
   { "sainnhe/everforest" },
-  { "Mofiqul/vscode.nvim" },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = { style = "moon" },
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "tokyonight-night",
+    },
+  },
+  -- { "Mofiqul/vscode.nvim" },
   -- remove annoying notifications
   {
     "folke/noice.nvim",
@@ -30,12 +41,6 @@ return {
       scroll = {
         enabled = false,
       },
-    },
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "vscode",
     },
   },
   {
@@ -95,9 +100,6 @@ return {
       },
     },
   },
-
-  -- add jsonls and schemastore ans setup treesitter for json, json5 and jsonc
-  { import = "lazyvim.plugins.extras.lang.json" },
 
   -- add any tools you want to have installed below
   {
