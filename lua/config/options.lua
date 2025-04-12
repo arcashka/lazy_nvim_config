@@ -3,6 +3,7 @@
 -- Add any additional options here
 vim.g.mapleader = ","
 vim.g.lazyvim_check_order = false
+vim.g.background = "auto"
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true

@@ -111,8 +111,6 @@ return {
         "shfmt",
         "clangd",
         "cmakelint",
-        "python-lsp-server",
-        "debugpy",
       },
     },
   },
@@ -199,84 +197,6 @@ return {
         },
       }
     end,
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    opts = {
-      automatic_setup = true,
-      ensure_installed = { "python", "codelldb" },
-      handlers = {
-        function(config)
-          require("mason-nvim-dap").default_setup(config)
-        end,
-        python = function(config)
-          local venv_path = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
-          local run_with_args = {
-            name = "Python: Launch current file with args",
-            args = function()
-              local argsString = vim.fn.input("Arguments:")
-              local args = {}
-              for substring in argsString:gmatch("%S+") do
-                table.insert(args, substring)
-              end
-              return args
-            end,
-            request = "launch",
-            type = "python",
-            program = "${file}",
-            pythonPath = venv_path and (venv_path .. "/bin/python") or nil,
-            cwd = venv_path and (venv_path .. "/../") or nil,
-          }
-          local run = {
-            name = "Python: Launch current file",
-            request = "launch",
-            type = "python",
-            program = "${file}",
-            pythonPath = venv_path and (venv_path .. "/bin/python") or nil,
-            cwd = venv_path and (venv_path .. "/../") or nil,
-          }
-          -- local run_file = {
-          --   name = "Python: TEST",
-          --   request = "launch",
-          --   type = "python",
-          --   program = function()
-          --     local programs = { "src/angry_bot.py", "src/dlt_triager.py" }
-          --     local program_number = vim.fn.inputlist(programs)
-          --     return programs[program_number]
-          --   end,
-          --   pythonPath = venv_path and (venv_path .. "/bin/python") or nil,
-          --   cwd = venv_path and (venv_path .. "/../") or nil,
-          -- }
-          local run_file = {
-            name = "Python: Run file",
-            request = "launch",
-            type = "python",
-            program = function()
-              return vim.fn.input("file: ")
-            end,
-            pythonPath = venv_path and (venv_path .. "/bin/python") or nil,
-            cwd = venv_path and (venv_path .. "/../") or nil,
-          }
-          local hardcode = {
-            name = "Python: hardcode",
-            request = "launch",
-            type = "python",
-            args = {
-              "--config",
-              "SpeechCarFunc",
-              "--file",
-              "/home/arcashka/Documents/projects/work/test/1.dlt",
-              "--output",
-            },
-            program = "src/dlt_triager.py",
-            pythonPath = venv_path and (venv_path .. "/bin/python") or nil,
-            cwd = venv_path and (venv_path .. "/../") or nil,
-          }
-          config.configurations = { hardcode, run, run_with_args, run_file }
-          require("mason-nvim-dap").default_setup(config)
-        end,
-      },
-    },
   },
   {
     "chentoast/marks.nvim",

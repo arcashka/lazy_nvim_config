@@ -1,4 +1,5 @@
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage
+mv nvim-linux-x86_64.appimage nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
 
